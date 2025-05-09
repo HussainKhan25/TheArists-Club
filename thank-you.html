@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You - The Artists' Club</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: rgba(251, 207, 232, 0.3); /* light pink with 30% opacity */
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    .flying-name {
+      position: absolute;
+      font-family: 'Dancing Script', 'Pacifico', cursive, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      opacity: 0.98;
+      padding: 0;
+      border-radius: 0;
+      background: none;
+      box-shadow: none;
+      border: none;
+      pointer-events: none;
+      z-index: 10;
+      animation: flyName 7s ease-in-out infinite alternate;
+      transition: color 0.3s;
+      letter-spacing: 0.01em;
+      text-shadow: 0 1px 2px #fff8;
+      margin: 0 16em 16em 0;
+    }
+    .flying-name:hover {
+      color: #fbbf24;
+      z-index: 20;
+      animation-play-state: paused;
+      transition: transform 0.5s cubic-bezier(.77,0,.18,1), color 0.3s;
+    }
+    @keyframes flyName {
+      0% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-30px) scale(1.08); }
+      100% { transform: translateY(0) scale(1); }
+    }
+    /* Floating Squares Background */
+    .floating-square {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      border: 2.5px solid #fbbf24;
+      border-radius: 0.4rem;
+      background: rgba(255,255,255,0.18);
+      opacity: 0.5;
+      z-index: 1;
+      animation: floatSquare 8s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    .floating-square.sq2 { left: 12%; top: 18%; width: 36px; height: 36px; border-color: #60a5fa; animation-delay: 2s; }
+    .floating-square.sq3 { right: 10%; top: 30%; width: 54px; height: 54px; border-color: #ec4899; animation-delay: 3.5s; }
+    .floating-square.sq4 { left: 20%; bottom: 22%; width: 40px; height: 40px; border-color: #fbbf24; animation-delay: 1.2s; }
+    .floating-square.sq5 { right: 18%; bottom: 18%; width: 32px; height: 32px; border-color: #60a5fa; animation-delay: 4.2s; }
+    @keyframes floatSquare {
+      0% { transform: translateY(0) scale(1) rotate(0deg); }
+      50% { transform: translateY(-24px) scale(1.08) rotate(8deg); }
+      100% { transform: translateY(0) scale(1) rotate(0deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="relative w-full h-screen flex flex-col justify-center items-center">
+    <!-- Floating Squares Background -->
+    <div class="floating-square" style="left:6%;top:10%;"></div>
+    <div class="floating-square sq2"></div>
+    <div class="floating-square sq3"></div>
+    <div class="floating-square sq4"></div>
+    <div class="floating-square sq5"></div>
+    <h1 class="text-5xl md:text-7xl font-extrabold text-center mb-8 mt-32 artistic-heading z-20">Thank You!</h1>
+    <p class="text-3xl md:text-4xl font-bold text-center text-gray-800 z-20 mb-8" style="text-shadow: 0 2px 12px #fff8, 0 1px 2px #fbbf2433; letter-spacing: 0.01em;">To everyone who made our journey possible.</p>
+    <a href="index.html" class="mt-4 px-8 py-3 bg-yellow-400 text-white rounded-lg shadow-lg font-semibold text-lg hover:bg-yellow-500 transition z-20">Back to Home</a>
+    <!-- Flying Names -->
+    <div id="flying-names"></div>
+  </div>
+  <script>
+    // All names as an array
+    const names = Array.from(new Set([
+      // NSAKCET Faculty Staff
+      "Dr., Abdul Sattar Sir", "Dr. Mohammad Sanaullah Qaseem Sir", "Dr. Raza Ahmed Khan Sir", "Ms. Umme Ruma mam", "Ms. Asima ma'am", "Ms. Sabiha ma'am",
+      // The Artists' Club Team
+      "Asna M", "Aamesha khan", "Ramishah Khanam", "Ayesha Siddiqua", "Hajera", "Abu Talha", "Mohd Nayef Siddique", "Shaik Farhana", "Hajar Raoof", "Faiza Mehtab", "Syed Mohammed Arsalan Ghori", "Mohammed Hussain Shareef", "Sumaiya Fatima", "Ummul Faiz", "Noor Saniya", "Maheen", "Mohammed Ibraheemuddin", "Abrar", "Zaid", "Syed Furqaan Moazzam", "Mehvish Fatima",
+      // Ramadan Expo Team (Strategic)
+      "Mohammed Ameen Ul Haq", "Mohammed Hussain Abid Khan", "Shaik Sahil", "Abu Imam", "Affan", "Aamesha khan", "Sobiya Ayaz", "Ibraheem", "Areeba A.",
+      // Ramadan Expo Team (Content)
+      "Mohd Nayef Siddique", "Shaik Farhana", "Saad", "Abrar", "Mehvish Fatima", "Shaik Mehraj", "Sumair", "Abrar",
+      // Ramadan Expo Team (Decoration & Event Management)
+      "Areeba A.", "Ibraheem", "Sobiya Ayaz", "Masooma Fatima", "Asna Mirza", "Affan", "Aamesha Khan", "Abrar", "Iqra", "Husna Begum", "Abeeha", "Abubakar", "Zayed", "Taharim", "Yusra", "Ayesha", "Ismail", "Zakaria", "Ghouse", "Rehan Ahmed Siddiqui", "Rehan", "Alisha", "Raqeeb"
+    ]));
+    const container = document.getElementById('flying-names');
+    function randomPos() {
+      // This function is now unused, see below for region-based distribution
+    }
+    // Color palette for names
+    const nameColors = [
+      '#fbbf24', // yellow
+      '#60a5fa', // blue
+      '#ec4899', // pink
+      '#34d399', // green
+      '#f87171', // red
+      '#a78bfa', // purple
+      '#f472b6', // rose
+      '#38bdf8', // sky
+      '#facc15', // amber
+      '#4ade80', // emerald
+      '#fb7185', // rose dark
+      '#818cf8', // indigo
+      '#f59e42', // orange
+      '#10b981', // teal
+      '#eab308', // gold
+      '#6366f1', // indigo dark
+      '#f472b6', // pink light
+      '#fbbf24', // yellow again
+      '#60a5fa', // blue again
+      '#ec4899', // pink again
+    ];
+    // Distribute names randomly but evenly across the whole page, with generous spacing
+    names.forEach((name, i) => {
+      const span = document.createElement('span');
+      span.className = 'flying-name';
+      span.textContent = name;
+      // Assign a color from the palette, cycling if needed
+      span.style.color = nameColors[i % nameColors.length];
+      // Random position, avoid edges (10% to 85% for top, 8% to 85% for left)
+      const top = 10 + Math.random() * 75;
+      const left = 8 + Math.random() * 77;
+      span.style.top = top + '%';
+      span.style.left = left + '%';
+      // If name has more than 3 words, reduce font size and increase margin
+      if (name.trim().split(/\s+/).length > 3) {
+        span.style.fontSize = '1.1rem';
+        span.style.margin = '0 14em 14em 0';
+        span.style.whiteSpace = 'nowrap';
+      } else {
+        span.style.margin = '0 16em 16em 0';
+      }
+      span.style.animationDelay = (Math.random() * 5) + 's';
+      // On hover, move to a new random position
+      span.addEventListener('mouseenter', function() {
+        const newTop = 10 + Math.random() * 75;
+        const newLeft = 8 + Math.random() * 77;
+        span.style.top = newTop + '%';
+        span.style.left = newLeft + '%';
+      });
+      container.appendChild(span);
+    });
+  </script>
+</body>
+</html> 
