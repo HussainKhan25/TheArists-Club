@@ -25,7 +25,6 @@
         <li><a href="products.html" class="nav-link">Products</a></li>
         <li><a href="events.html" class="nav-link">Events</a></li>
         <li><a href="explore-art.html" class="nav-link">Explore Art</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
         <li><a href="https://forms.gle/rqd8PNRjmM41PkN46" class="join-btn ml-4" target="_blank">Join Us</a></li>
       </ul>
     </div>
@@ -89,7 +88,7 @@
   </main>
 
   <footer class="w-full py-6 bg-white bg-opacity-80 text-center text-gray-700 font-medium text-lg border-t border-gray-200 mt-10">
-    &copy; 2025 Website with creativity by <span class="font-bold text-blue-700">Mohammed Hussain Abid Khan</span>
+    &copy; 2024 Website with creativity by <span class="font-bold text-blue-700">Mohammed Hussain Abid Khan</span>
   </footer>
 
   <script src="script.js"></script>
@@ -100,10 +99,7 @@
         title: "The Artists' Club Stall – Zouq-e-Hyderabad",
         date: "25th January 2025",
         mainImg: "https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1738058758222.jpg?updatedAt=1746774369030",
-        images: [
-          "https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1738058757272.jpg?updatedAt=1746774369026",
-          "https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1738058757029.jpg?updatedAt=1746774369040"
-        ],
+        images: [],
         description: `The Artist Club NSAKCET stall at <em>Zouq-e-Hyderabad</em> was a resounding success! An unforgettable fusion of creativity, talent, and interaction.`,
         highlights: [
           {icon: "🎯", text: "1-Minute Challenge: Surprise chits led participants to sketch, paint, or create calligraphy in just 1 minute"},
@@ -112,17 +108,13 @@
         ],
         thanks: "Dr. Abdul Sattar Sir, Dr. Mohammad Sanaullah Qaseem Sir, Dr. Raza Ahmed Khan Sir, Miss Umme Ruma Mam, Ms. Asima Mam, and Ms. Sabiha Mam",
         org: "A heartfelt shoutout to the Mavericks Club and Deanship of Student Affairs, NSAKCET for the stellar organization.",
-        note: "This event was a true celebration of imagination and unity through art.",
-        linkedin: "https://www.linkedin.com/posts/theartistsclub_zouq-e-hyderabad-art-exhibition-activity-1234567890"
+        note: "This event was a true celebration of imagination and unity through art."
       },
       {
         title: "Ramadan Expo 2025",
-        date: "In Collaboration with The Literary Club, NSAKCET",
+        date: "27th February 2025",
         mainImg: "https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1741345440036%20(1).jpg?updatedAt=1746793091595",
-        images: [
-          "https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1741345440634.jpg?updatedAt=1746774368969",
-          "https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1741345439890.jpg?updatedAt=1746774408283"
-        ],
+        images: [],
         description: "We joined hands to make Ramadan unforgettable!",
         highlights: [
           {icon: "🌍", text: "Ramadan Around the World – Unique traditions from different cultures"},
@@ -131,8 +123,7 @@
           {icon: "✍", text: "Arabic Calligraphy Station – Live Islamic art in action"},
           {icon: "🎨", text: "Poster Design Competition – Artistic reflections of spirituality"}
         ],
-        thanks: "A heartfelt thank you to all who contributed to making this expo meaningful and impactful!",
-        linkedin: "https://www.linkedin.com/posts/theartistsclub_ramadan-expo-2025-activity-1234567890"
+        thanks: "A heartfelt thank you to all who contributed to making this expo meaningful and impactful!"
       },
       {
         title: "Ramadan Poster Competition",
@@ -180,7 +171,7 @@
       const isPoster = event.title.toLowerCase().includes('poster');
       modalContent.innerHTML = `
         <img src="${event.mainImg}" alt="${event.title}" class="w-full h-56 rounded-xl mb-4 ${isPoster ? 'object-contain bg-white' : 'object-cover'}">
-        <h2 class="text-2xl font-bold mb-2">${event.title}</h2>
+        <h2 class="text-2xl font-bold mb-2 font-sans">${event.title}</h2>
         <p class="text-gray-600 mb-2">${event.date}</p>
         <div class="mb-4">${event.description}</div>
         <h3 class="text-lg font-bold mb-2">Highlights:</h3>
@@ -190,8 +181,6 @@
         ${event.thanks ? `<div class="mb-2"><span class="font-semibold">Special Thanks:</span> ${event.thanks}</div>` : ''}
         ${event.org ? `<div class="mb-2">${event.org}</div>` : ''}
         ${event.note ? `<div class="italic text-gray-500 mb-2">${event.note}</div>` : ''}
-        ${event.images && event.images.length ? `<div class="flex gap-3 mt-4">${event.images.map(img => `<img src='${img}' class='w-20 h-20 object-cover rounded-lg border'>`).join('')}</div>` : ''}
-        ${event.linkedin ? `<div class="mt-4"><a href="${event.linkedin}" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" class="w-5 h-5">View on LinkedIn</a></div>` : ''}
       `;
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
