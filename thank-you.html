@@ -26,11 +26,11 @@
       border: none;
       pointer-events: none;
       z-index: 10;
-      animation: flyName 7s ease-in-out infinite alternate;
+      animation: flyName 12s ease-in-out infinite alternate;
       transition: color 0.3s;
       letter-spacing: 0.01em;
       text-shadow: 0 1px 2px #fff8;
-      margin: 0 16em 16em 0;
+      margin: 0 25em 25em 0;
     }
     .flying-name:hover {
       color: #fbbf24;
@@ -75,30 +75,81 @@
     <div class="floating-square sq3"></div>
     <div class="floating-square sq4"></div>
     <div class="floating-square sq5"></div>
+    <!-- Home link moved to top right -->
+    <a href="index.html" class="absolute top-4 right-4 px-6 py-2 bg-yellow-400 text-white rounded-lg shadow-lg font-semibold text-lg hover:bg-yellow-500 transition z-20">Home</a>
     <h1 class="text-5xl md:text-7xl font-extrabold text-center mb-8 mt-32 artistic-heading z-20">Thank You!</h1>
     <p class="text-3xl md:text-4xl font-bold text-center text-gray-800 z-20 mb-8" style="text-shadow: 0 2px 12px #fff8, 0 1px 2px #fbbf2433; letter-spacing: 0.01em;">To everyone who made our journey possible.</p>
-    <a href="index.html" class="mt-4 px-8 py-3 bg-yellow-400 text-white rounded-lg shadow-lg font-semibold text-lg hover:bg-yellow-500 transition z-20">Back to Home</a>
+    
+    <!-- Page Navigation -->
+    <div class="flex space-x-4 mb-8 z-20">
+      <button id="prevPage" class="px-6 py-2 bg-yellow-400 text-white rounded-lg shadow-lg font-semibold text-lg hover:bg-yellow-500 transition disabled:opacity-50 disabled:cursor-not-allowed">Previous</button>
+      <span id="pageInfo" class="px-6 py-2 bg-white bg-opacity-80 rounded-lg shadow-lg font-semibold text-lg">Page 1 of 4</span>
+      <button id="nextPage" class="px-6 py-2 bg-yellow-400 text-white rounded-lg shadow-lg font-semibold text-lg hover:bg-yellow-500 transition">Next</button>
+    </div>
+    
     <!-- Flying Names -->
     <div id="flying-names"></div>
   </div>
   <script>
-    // All names as an array
-    const names = Array.from(new Set([
-      // NSAKCET Faculty Staff
-      "Dr., Abdul Sattar Sir", "Dr. Mohammad Sanaullah Qaseem Sir", "Dr. Raza Ahmed Khan Sir", "Ms. Umme Ruma mam", "Ms. Asima ma'am", "Ms. Sabiha ma'am",
-      // The Artists' Club Team
-      "Asna M", "Aamesha khan", "Ramishah Khanam", "Ayesha Siddiqua", "Aesha Mahveen", "Hajera", "Abu Talha", "Mohd Nayef Siddique", "Shaik Farhana", "Hajar Raoof", "Faiza Mehtab", "Syed Mohammed Arsalan Ghori", "Mohammed Hussain Shareef", "Sumaiya Fatima", "Ummul Faiz", "Noor Saniya", "Maheen", "Mohammed Ibraheemuddin", "Abrar", "Zaid", "Syed Furqaan Moazzam", "Mehvish Fatima",
-      // Ramadan Expo Team (Strategic)
-      "Mohammed Ameen Ul Haq", "Mohammed Hussain Abid Khan", "Shaik Sahil", "Abu Imam", "Affan", "Aamesha khan", "Sobiya Ayaz", "Ibraheem", "Areeba A.",
-      // Ramadan Expo Team (Content)
-      "Mohd Nayef Siddique", "Shaik Farhana", "Saad", "Abrar", "Mehvish Fatima", "Shaik Mehraj", "Sumair", "Abrar",
-      // Ramadan Expo Team (Decoration & Event Management)
-      "Areeba A.", "Ibraheem", "Sobiya Ayaz", "Masooma Fatima", "Asna Mirza", "Affan", "Aamesha Khan", "Abrar", "Iqra", "Husna Begum", "Abeeha", "Abubakar", "Zayed", "Taharim", "Yusra", "Ayesha", "Ismail", "Zakaria", "Ghouse", "Rehan Ahmed Siddiqui", "Rehan", "Alisha", "Raqeeb"
-    ]));
+    // All names organized by pages
+    const pageNames = {
+      page1: [
+        // NSAKCET Faculty Staff
+        "Dr., Abdul Sattar Sir", "Dr. Mohammad Sanaullah Qaseem Sir", "Dr. Raza Ahmed Khan Sir", 
+        "Ms. Umme Ruma mam", "Ms. Asima ma'am", "Ms. Sabiha ma'am",
+        // The Artists' Club Team
+        "Asna Mirza", "Aamesha khan", "Ramishah Khanam", "Ayesha Siddiqua", "Hajera", 
+        "Abu Talha", "Mohd Nayef Siddique", "Shaik Farhana", "Hajar Raoof", "Faiza Mehtab", 
+        "Mohammed Hussain Shareef", "Sumaiya Fatima", 
+        "Ummul Faiz", "Saniya Maheen Syed", "Maheen", "Mohammed Ibraheemuddin", "Abrar", "Zaid", 
+        "Syed Furqaan Moazzam", "Mehvish Fatima"
+      ],
+      page2: [
+        // Ramadan Expo Team (Strategic)
+        "Mohammed Ameen Ul Haq", "Mohammed Hussain Abid Khan", "Shaik Sahil", "Abu Imam", 
+        "Affan", "Sobiya Ayaz", "Ibraheem", "Areeba A.",
+        // Ramadan Expo Team (Content)
+        "Saad", "Shaik Mehraj", "Sumair",
+        // Ramadan Expo Team (Decoration & Event Management)
+        "Masooma Fatima", "Iqra", "Husna Begum", "Abeeha", "Abubakar", "Zayed", 
+        "Taharim", "Yusra", "Ayesha", "Ismail", "Zakaria", "Ghouse", "Rehan Ahmed Siddiqui", 
+        "Rehan", "Alisha", "Raqeeb"
+      ],
+      page3: [
+        // Additional Team Members
+        "Aesha Mahveen",
+        "Ms. Asima Parveen mam",
+        "Ms. Sabiha Khatoon mam",
+        "Mohammed Abubaker",
+        "Ali Akber",
+        "Noman JamalUddin",
+        "Ahmed Jamal",
+        "Umair Nouman",
+        "Syed Mohammed Arsalan Ghori",
+        "Noorayn Fatima",
+        "Safiya Fatima",
+        "Mehvish",
+        "Zaid",
+        "Affan",
+        "Abrar",
+        "Rehan Ahmed Siddiqui",
+        "Rehan",
+        "Sumaiya Fatima",
+        "Abdul Ahad"
+      ],
+      page4: [
+        "Aaliya Jabeen"
+      ]
+    };
+
     const container = document.getElementById('flying-names');
-    function randomPos() {
-      // This function is now unused, see below for region-based distribution
-    }
+    const prevButton = document.getElementById('prevPage');
+    const nextButton = document.getElementById('nextPage');
+    const pageInfo = document.getElementById('pageInfo');
+    
+    let currentPage = 1;
+    const totalPages = 4; // Now 4 pages
+
     // Color palette for names
     const nameColors = [
       '#fbbf24', // yellow
@@ -122,36 +173,83 @@
       '#60a5fa', // blue again
       '#ec4899', // pink again
     ];
-    // Distribute names randomly but evenly across the whole page, with generous spacing
-    names.forEach((name, i) => {
-      const span = document.createElement('span');
-      span.className = 'flying-name';
-      span.textContent = name;
-      // Assign a color from the palette, cycling if needed
-      span.style.color = nameColors[i % nameColors.length];
-      // Random position, avoid edges (10% to 85% for top, 8% to 85% for left)
-      const top = 10 + Math.random() * 75;
-      const left = 8 + Math.random() * 77;
-      span.style.top = top + '%';
-      span.style.left = left + '%';
-      // If name has more than 3 words, reduce font size and increase margin
-      if (name.trim().split(/\s+/).length > 3) {
-        span.style.fontSize = '1.1rem';
-        span.style.margin = '0 14em 14em 0';
-        span.style.whiteSpace = 'nowrap';
-      } else {
-        span.style.margin = '0 16em 16em 0';
-      }
-      span.style.animationDelay = (Math.random() * 5) + 's';
-      // On hover, move to a new random position
-      span.addEventListener('mouseenter', function() {
-        const newTop = 10 + Math.random() * 75;
-        const newLeft = 8 + Math.random() * 77;
-        span.style.top = newTop + '%';
-        span.style.left = newLeft + '%';
+
+    function updatePageInfo() {
+      pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+      prevButton.disabled = currentPage === 1;
+      nextButton.disabled = currentPage === totalPages;
+    }
+
+    function displayNames(page) {
+      container.innerHTML = ''; // Clear existing names
+      const pageKey = `page${page}`;
+      const names = pageNames[pageKey];
+
+      // Calculate grid-like positions for better distribution
+      const gridSize = Math.ceil(Math.sqrt(names.length));
+
+      names.forEach((name, i) => {
+        const span = document.createElement('span');
+        span.className = 'flying-name';
+        span.textContent = name;
+        
+        // Assign a color from the palette, cycling if needed
+        span.style.color = nameColors[i % nameColors.length];
+        
+        // Calculate position with padding
+        const row = Math.floor(i / gridSize);
+        const col = i % gridSize;
+        const top = 15 + (row * 25);
+        const left = 10 + (col * 25);
+        
+        span.style.top = top + '%';
+        span.style.left = left + '%';
+        
+        // If name has more than 3 words, reduce font size and increase margin
+        if (name.trim().split(/\s+/).length > 3) {
+          span.style.fontSize = '1.1rem';
+          span.style.margin = '0 22em 22em 0';
+          span.style.whiteSpace = 'nowrap';
+        } else {
+          span.style.margin = '0 25em 25em 0';
+        }
+        
+        span.style.animationDelay = (Math.random() * 8) + 's';
+        
+        // On hover, move to a new random position within a smaller range
+        span.addEventListener('mouseenter', function() {
+          const currentTop = parseFloat(span.style.top);
+          const currentLeft = parseFloat(span.style.left);
+          const newTop = Math.max(15, Math.min(85, currentTop + (Math.random() * 20 - 10)));
+          const newLeft = Math.max(10, Math.min(85, currentLeft + (Math.random() * 20 - 10)));
+          span.style.top = newTop + '%';
+          span.style.left = newLeft + '%';
+        });
+        
+        container.appendChild(span);
       });
-      container.appendChild(span);
+    }
+
+    // Event listeners for pagination
+    prevButton.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        displayNames(currentPage);
+        updatePageInfo();
+      }
     });
+
+    nextButton.addEventListener('click', () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        displayNames(currentPage);
+        updatePageInfo();
+      }
+    });
+
+    // Initial display
+    displayNames(currentPage);
+    updatePageInfo();
   </script>
 </body>
 </html> 
