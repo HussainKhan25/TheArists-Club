@@ -10,21 +10,21 @@
 </head>
 <body class="bg-gray-50 text-gray-900">
   <!-- Navbar -->
-  <nav class="fixed w-full top-0 left-0 z-30 bg-white bg-opacity-60 border-b border-white/40 shadow-md backdrop-blur-lg">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-2">
-      <div class="flex items-center space-x-3">
-        <img src="https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/THE_LITERARY_CLUB__2_-removebg-preview.png?updatedAt=1746771819192" alt="Logo" class="h-16 w-16 rounded-full shadow">
+  <nav class="fixed w-full top-0 left-0 z-30 bg-white bg-opacity-60 border-b border-white/40 shadow-md backdrop-blur-lg h-20">
+    <div class="max-w-7xl mx-auto flex items-center h-20 px-6">
+      <div class="flex items-center space-x-3 h-full">
+        <img src="https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/THE_LITERARY_CLUB__2_-removebg-preview.png?updatedAt=1746771819192" alt="Logo" class="h-16 w-auto" style="background:none!important;border:none!important;box-shadow:none!important;">
       </div>
-      <button id="nav-toggle" class="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-300">
+      <button id="nav-toggle" class="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-300 ml-auto">
         <svg class="h-7 w-7 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
-      <ul id="nav-links" class="hidden md:flex space-x-8 font-semibold text-lg">
+      <ul id="nav-links" class="hidden md:flex space-x-8 font-semibold text-lg ml-auto items-center h-full">
         <li><a href="index.html" class="nav-link">Home</a></li>
         <li><a href="index.html#mission-vision" class="nav-link">Mission & Vision</a></li>
         <li><a href="index.html#art-mediums" class="nav-link">Art Mediums</a></li>
         <li><a href="products.html" class="nav-link">Products</a></li>
         <li><a href="events.html" class="nav-link">Events</a></li>
-        <li><a href="#" class="nav-link">Explore Art (Coming Soon)</a></li>
+        <li><a href="explore-art.html" class="nav-link">Explore Art</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
         <li><a href="https://forms.gle/rqd8PNRjmM41PkN46" class="join-btn ml-4" target="_blank">Join Us</a></li>
       </ul>
@@ -52,159 +52,20 @@
       </svg>
     </h1>
 
-    <!-- Zouq-e-Hyderabad Event -->
-    <section class="mb-20 bg-white rounded-2xl shadow-lg overflow-hidden">
-      <div class="relative h-[420px] md:h-[520px]">
-        <img src="https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1738058758222.jpg?updatedAt=1746774369030" alt="Zouq-e-Hyderabad Event" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-        <div class="absolute bottom-0 left-0 p-6 text-white">
-          <h2 class="text-3xl md:text-4xl font-bold mb-2">The Artists' Club Stall – Zouq-e-Hyderabad</h2>
-          <p class="text-lg">25th January 2025</p>
-        </div>
+    <!-- Slideshow Carousel -->
+    <div id="eventCarousel" class="relative mb-16 flex justify-center items-center">
+      <div class="flex overflow-x-auto no-scrollbar snap-x snap-mandatory gap-8 pb-4 justify-center items-center" style="scroll-behavior:smooth;">
+        <!-- Slides will be injected by JS -->
       </div>
-      <div class="p-6 md:p-8 relative" style="min-height: 260px;">
-        <!-- Flying Images for Zouq-e-Hyderabad (right side) -->
-        <div class="flying-images-container absolute inset-y-0 right-0 flex flex-col gap-6 items-end pointer-events-none" style="width: 180px;">
-          <img src="https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1738058757272.jpg?updatedAt=1746774369026" alt="Zouq-e-Hyderabad Image 1" class="flying-image hover-zoom" style="top: 10%; right: 10%;">
-          <img src="https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1738058757029.jpg?updatedAt=1746774369040" alt="Zouq-e-Hyderabad Image 2" class="flying-image hover-zoom" style="top: 50%; right: 5%;">
-        </div>
-        <p class="text-lg mb-6">The Artist Club NSAKCET stall at <em>Zouq-e-Hyderabad</em> was a resounding success! An unforgettable fusion of creativity, talent, and interaction.</p>
-        
-        <h3 class="text-2xl font-bold mb-4">Highlights:</h3>
-        <ul class="space-y-3 mb-6">
-          <li class="flex items-start gap-3">
-            <span class="text-2xl">🎯</span>
-            <span><strong>1-Minute Challenge:</strong> Surprise chits led participants to sketch, paint, or create calligraphy in just 1 minute</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-2xl">✍</span>
-            <span><strong>Calligraphy Rewards:</strong> Winners received their names in Arabic or English calligraphy</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-2xl">🎨</span>
-            <span><strong>Live Art:</strong> On-the-spot paper and canvas artworks by our talented artists</span>
-          </li>
-        </ul>
+    </div>
 
-        <h3 class="text-2xl font-bold mb-4">Special Thanks To:</h3>
-        <p class="mb-4">Dr. Abdul Sattar Sir, Dr. Mohammad Sanaullah Qaseem Sir, Dr. Raza Ahmed Khan Sir, Miss Umme Ruma Mam, Ms. Asima Mam, and Ms. Sabiha Mam</p>
-        <p class="mb-6">A heartfelt shoutout to the <strong>Mavericks Club</strong> and <strong>Deanship of Student Affairs, NSAKCET</strong> for the stellar organization.</p>
-        <p class="italic text-gray-600">This event was a true celebration of imagination and unity through art.</p>
-        
-        <div class="mt-6">
-          <a href="https://www.linkedin.com/posts/theartistsclub_zouq-e-hyderabad-art-exhibition-activity-1234567890" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800" target="_blank">
-            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" class="w-5 h-5">
-            View on LinkedIn
-          </a>
-        </div>
+    <!-- Modal for Event Details -->
+    <div id="eventModal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+      <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-6 relative overflow-y-auto max-h-[90vh]">
+        <button id="closeModal" class="absolute top-3 right-3 text-gray-500 hover:text-pink-600 text-3xl font-bold">&times;</button>
+        <div id="modalContent"></div>
       </div>
-    </section>
-
-    <!-- Ramadan Expo Event -->
-    <section class="mb-20 bg-white rounded-2xl shadow-lg overflow-hidden">
-      <div class="relative h-[420px] md:h-[520px]">
-        <img src="https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1741345440036%20(1).jpg?updatedAt=1746793091595" alt="Ramadan Expo" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-        <div class="absolute bottom-0 left-0 p-6 text-white">
-          <h2 class="text-3xl md:text-4xl font-bold mb-2">Ramadan Expo 2025</h2>
-          <p class="text-lg">In Collaboration with The Literary Club, NSAKCET</p>
-        </div>
-      </div>
-      <div class="p-6 md:p-8 relative" style="min-height: 260px;">
-        <!-- Flying Images for Ramadan Expo (right side, lower) -->
-        <div class="flying-images-container absolute bottom-0 right-0 flex flex-col gap-6 items-end pointer-events-none" style="width: 180px;">
-          <img src="https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1741345440634.jpg?updatedAt=1746774368969" alt="Ramadan Expo Image 1" class="flying-image hover-zoom" style="bottom: 60px; right: 10%;">
-          <img src="https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1741345439890.jpg?updatedAt=1746774408283" alt="Ramadan Expo Image 2" class="flying-image hover-zoom" style="bottom: 0; right: 5%;">
-        </div>
-        <p class="text-lg mb-6">We joined hands to make Ramadan unforgettable!</p>
-        
-        <h3 class="text-2xl font-bold mb-4">Highlights:</h3>
-        <ul class="space-y-3 mb-6">
-          <li class="flex items-start gap-3">
-            <span class="text-2xl">🌍</span>
-            <span><strong>Ramadan Around the World</strong> – Unique traditions from different cultures</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-2xl">💰</span>
-            <span><strong>Zakat Corner</strong> – Insights on charity and giving</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-2xl">🌴</span>
-            <span><strong>Dates Corner</strong> – The heart of Ramadan traditions</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-2xl">✍</span>
-            <span><strong>Arabic Calligraphy Station</strong> – Live Islamic art in action</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-2xl">🎨</span>
-            <span><strong>Poster Design Competition</strong> – Artistic reflections of spirituality</span>
-          </li>
-        </ul>
-
-        <p class="mb-6">A heartfelt thank you to all who contributed to making this expo meaningful and impactful!</p>
-        
-        <div class="mt-6">
-          <a href="https://www.linkedin.com/posts/theartistsclub_ramadan-expo-2025-activity-1234567890" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800" target="_blank">
-            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" class="w-5 h-5">
-            View on LinkedIn
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Ramadan Poster Competition -->
-    <section class="mb-20 bg-white rounded-2xl shadow-lg overflow-hidden">
-      <div class="relative h-[420px] md:h-[520px]">
-        <img src="https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1741975703264.jpg?updatedAt=1746774368668" alt="Ramadan Poster Competition" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-        <div class="absolute bottom-0 left-0 p-6 text-white">
-          <h2 class="text-3xl md:text-4xl font-bold mb-2">Ramadan Poster Competition</h2>
-          <p class="text-lg">Celebrate Through Creativity</p>
-        </div>
-      </div>
-      <div class="p-6 md:p-8 relative" style="min-height: 260px;">
-        <!-- No flying images for Ramadan Poster Competition -->
-        <p class="text-lg mb-6">An open invitation to express Ramadan's beauty through art!</p>
-        
-        <h3 class="text-2xl font-bold mb-4">Themes Explored:</h3>
-        <ul class="space-y-3 mb-6">
-          <li class="flex items-start gap-3">
-            <span class="text-2xl">📌</span>
-            <span>Ramadan Preparations</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-2xl">📌</span>
-            <span>Do's & Don'ts of Ramadan</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-2xl">📌</span>
-            <span>Becoming Better Through Ramadan</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-2xl">📌</span>
-            <span>The Spirit of Charity</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-2xl">📌</span>
-            <span>Ramadan & Taqwa</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-2xl">📌</span>
-            <span>Ramadan & The Quran</span>
-          </li>
-        </ul>
-
-        <p class="italic text-gray-600 mb-6">Art meets spirituality in this thoughtful and inspiring competition.</p>
-        
-        <div class="mt-6">
-          <a href="https://www.linkedin.com/posts/theartistsclub_ramadan-poster-competition-activity-1234567890" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800" target="_blank">
-            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" class="w-5 h-5">
-            View on LinkedIn
-          </a>
-        </div>
-      </div>
-    </section>
+    </div>
 
     <!-- Upcoming Events -->
     <section class="bg-white rounded-2xl shadow-lg p-8">
@@ -228,9 +89,140 @@
   </main>
 
   <footer class="w-full py-6 bg-white bg-opacity-80 text-center text-gray-700 font-medium text-lg border-t border-gray-200 mt-10">
-    &copy; 2025 Website with creativity by <span class="font-bold text-blue-700">Mohammed Hussain Abid Khan</span>
+    &copy; 2024 Website with creativity by <span class="font-bold text-blue-700">Mohammed Hussain Abid Khan</span>
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    // Event data
+    const events = [
+      {
+        title: "The Artists' Club Stall – Zouq-e-Hyderabad",
+        date: "25th January 2025",
+        mainImg: "https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1738058758222.jpg?updatedAt=1746774369030",
+        images: [
+          "https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1738058757272.jpg?updatedAt=1746774369026",
+          "https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1738058757029.jpg?updatedAt=1746774369040"
+        ],
+        description: `The Artist Club NSAKCET stall at <em>Zouq-e-Hyderabad</em> was a resounding success! An unforgettable fusion of creativity, talent, and interaction.`,
+        highlights: [
+          {icon: "🎯", text: "1-Minute Challenge: Surprise chits led participants to sketch, paint, or create calligraphy in just 1 minute"},
+          {icon: "✍", text: "Calligraphy Rewards: Winners received their names in Arabic or English calligraphy"},
+          {icon: "🎨", text: "Live Art: On-the-spot paper and canvas artworks by our talented artists"}
+        ],
+        thanks: "Dr. Abdul Sattar Sir, Dr. Mohammad Sanaullah Qaseem Sir, Dr. Raza Ahmed Khan Sir, Miss Umme Ruma Mam, Ms. Asima Mam, and Ms. Sabiha Mam",
+        org: "A heartfelt shoutout to the Mavericks Club and Deanship of Student Affairs, NSAKCET for the stellar organization.",
+        note: "This event was a true celebration of imagination and unity through art.",
+        linkedin: "https://www.linkedin.com/posts/theartistsclub_zouq-e-hyderabad-art-exhibition-activity-1234567890"
+      },
+      {
+        title: "Ramadan Expo 2025",
+        date: "In Collaboration with The Literary Club, NSAKCET",
+        mainImg: "https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1741345440036%20(1).jpg?updatedAt=1746793091595",
+        images: [
+          "https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1741345440634.jpg?updatedAt=1746774368969",
+          "https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1741345439890.jpg?updatedAt=1746774408283"
+        ],
+        description: "We joined hands to make Ramadan unforgettable!",
+        highlights: [
+          {icon: "🌍", text: "Ramadan Around the World – Unique traditions from different cultures"},
+          {icon: "💰", text: "Zakat Corner – Insights on charity and giving"},
+          {icon: "🌴", text: "Dates Corner – The heart of Ramadan traditions"},
+          {icon: "✍", text: "Arabic Calligraphy Station – Live Islamic art in action"},
+          {icon: "🎨", text: "Poster Design Competition – Artistic reflections of spirituality"}
+        ],
+        thanks: "A heartfelt thank you to all who contributed to making this expo meaningful and impactful!",
+        linkedin: "https://www.linkedin.com/posts/theartistsclub_ramadan-expo-2025-activity-1234567890"
+      },
+      {
+        title: "Ramadan Poster Competition",
+        date: "Celebrate Through Creativity",
+        mainImg: "https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1741975703264.jpg?updatedAt=1746774368668",
+        images: [],
+        description: "An open invitation to express Ramadan's beauty through art!",
+        highlights: [
+          {icon: "📌", text: "Ramadan Preparations"},
+          {icon: "📌", text: "Do's & Don'ts of Ramadan"},
+          {icon: "📌", text: "Becoming Better Through Ramadan"},
+          {icon: "📌", text: "The Spirit of Charity"},
+          {icon: "📌", text: "Ramadan & Taqwa"},
+          {icon: "📌", text: "Ramadan & The Quran"}
+        ],
+        note: "Art meets spirituality in this thoughtful and inspiring competition.",
+        linkedin: "https://www.linkedin.com/posts/theartistsclub_ramadan-poster-competition-activity-1234567890"
+      }
+    ];
+
+    // Render carousel slides
+    const carousel = document.querySelector('#eventCarousel .flex');
+    events.forEach((event, idx) => {
+      const slide = document.createElement('div');
+      slide.className = 'snap-center shrink-0 w-80 md:w-[420px] cursor-pointer group relative transition-transform duration-300 hover:scale-105 flying-slide';
+      slide.innerHTML = `
+        <div class="rounded-2xl shadow-lg overflow-hidden h-64 md:h-80 relative">
+          <img src="${event.mainImg}" alt="${event.title}" class="w-full h-full object-cover group-hover:brightness-90 transition">
+          <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-white/90 via-white/70 to-transparent p-4">
+            <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-1 drop-shadow">${event.title}</h2>
+            <p class="text-gray-800 text-sm md:text-base drop-shadow">${event.date}</p>
+          </div>
+        </div>
+      `;
+      slide.addEventListener('click', () => openModal(idx));
+      carousel.appendChild(slide);
+    });
+
+    // Modal logic
+    const modal = document.getElementById('eventModal');
+    const modalContent = document.getElementById('modalContent');
+    function openModal(idx) {
+      const event = events[idx];
+      // For Ramadan Poster Competition, use object-contain and white bg
+      const isPoster = event.title.toLowerCase().includes('poster');
+      modalContent.innerHTML = `
+        <img src="${event.mainImg}" alt="${event.title}" class="w-full h-56 rounded-xl mb-4 ${isPoster ? 'object-contain bg-white' : 'object-cover'}">
+        <h2 class="text-2xl font-bold mb-2">${event.title}</h2>
+        <p class="text-gray-600 mb-2">${event.date}</p>
+        <div class="mb-4">${event.description}</div>
+        <h3 class="text-lg font-bold mb-2">Highlights:</h3>
+        <ul class="space-y-2 mb-4">
+          ${event.highlights.map(h => `<li class="flex items-start gap-2"><span class="text-xl">${h.icon}</span><span>${h.text}</span></li>`).join('')}
+        </ul>
+        ${event.thanks ? `<div class="mb-2"><span class="font-semibold">Special Thanks:</span> ${event.thanks}</div>` : ''}
+        ${event.org ? `<div class="mb-2">${event.org}</div>` : ''}
+        ${event.note ? `<div class="italic text-gray-500 mb-2">${event.note}</div>` : ''}
+        ${event.images && event.images.length ? `<div class="flex gap-3 mt-4">${event.images.map(img => `<img src='${img}' class='w-20 h-20 object-cover rounded-lg border'>`).join('')}</div>` : ''}
+        ${event.linkedin ? `<div class="mt-4"><a href="${event.linkedin}" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" class="w-5 h-5">View on LinkedIn</a></div>` : ''}
+      `;
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    document.getElementById('closeModal').onclick = function() {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    };
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Add flying animation to slides
+    const style = document.createElement('style');
+    style.innerHTML = `
+      .flying-slide {
+        animation: flySlide 7s ease-in-out infinite alternate;
+      }
+      @keyframes flySlide {
+        0% { transform: translateY(0) scale(1) rotate(-2deg); }
+        20% { transform: translateY(-10px) scale(1.03) rotate(2deg); }
+        40% { transform: translateY(8px) scale(1.01) rotate(-1deg); }
+        60% { transform: translateY(-6px) scale(1.04) rotate(1deg); }
+        80% { transform: translateY(6px) scale(1.02) rotate(-2deg); }
+        100% { transform: translateY(0) scale(1) rotate(0deg); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
 </body>
 </html> 
