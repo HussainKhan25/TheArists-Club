@@ -3,40 +3,188 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Events - The Artists' Club</title>
+  <title>The Artists' Club</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    /* Add this to your existing styles */
+    .flying-image {
+      position: absolute;
+      width: 200px;
+      height: auto;
+      left: 0;
+      top: 22%;
+      z-index: 20;
+      opacity: 0.97;
+      pointer-events: none;
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      animation: birdGlide 7.5s linear 0s 1 forwards;
+      transition: none;
+    }
+
+    @keyframes birdGlide {
+      0% {
+        left: -12%;
+        top: 24%;
+        transform: scale(1) rotate(-8deg);
+        opacity: 0.97;
+      }
+      20% {
+        left: 15%;
+        top: 20%;
+        transform: scale(1.03) rotate(-4deg);
+      }
+      40% {
+        left: 40%;
+        top: 18%;
+        transform: scale(1.06) rotate(0deg);
+      }
+      60% {
+        left: 70%;
+        top: 20%;
+        transform: scale(1.03) rotate(4deg);
+      }
+      80% {
+        left: 100%;
+        top: 24%;
+        transform: scale(1) rotate(8deg);
+        opacity: 0.97;
+      }
+      100% {
+        left: 120%;
+        top: 24%;
+        transform: scale(1) rotate(8deg);
+        opacity: 0;
+      }
+    }
+
+    .flying-inauguration-image-bottom {
+      position: absolute;
+      width: 170px;
+      height: auto;
+      right: 3%;
+      bottom: 7%;
+      z-index: 18;
+      opacity: 0.97;
+      pointer-events: none;
+      background: none !important;
+      border-radius: 1.5rem;
+      box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+      animation: inaugurationFloat 8.5s ease-in-out infinite alternate;
+      transition: none;
+    }
+
+    @keyframes inaugurationFloat {
+      0% { right: 3%; bottom: 7%; transform: scale(1) rotate(-3deg); }
+      25% { right: 6%; bottom: 10%; transform: scale(1.04) rotate(2deg); }
+      50% { right: 2%; bottom: 13%; transform: scale(1.08) rotate(-2deg); }
+      75% { right: 5%; bottom: 9%; transform: scale(1.03) rotate(3deg); }
+      100% { right: 3%; bottom: 7%; transform: scale(1) rotate(-3deg); }
+    }
+  </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
   <!-- Navbar -->
-  <nav class="fixed w-full top-0 left-0 z-30 bg-white bg-opacity-60 border-b border-white/40 shadow-md backdrop-blur-lg h-20">
-    <div class="max-w-7xl mx-auto flex items-center h-20 px-6">
-      <div class="flex items-center space-x-3 h-full">
-        <img src="https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/THE_LITERARY_CLUB__2_-removebg-preview.png?updatedAt=1746771819192" alt="Logo" class="h-16 w-auto" style="background:none!important;border:none!important;box-shadow:none!important;">
+  <nav class="fixed w-full top-0 left-0 z-30 bg-white bg-opacity-60 border-b border-white/40 shadow-md backdrop-blur-lg">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-2">
+      <div class="flex items-center space-x-3">
+        <img id="navbar-logo" src="https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/THE_LITERARY_CLUB__2_-removebg-preview.png?updatedAt=1746771819192" alt="Logo" class="h-24 w-auto opacity-0 transition-opacity duration-700" style="background:none!important;border:none!important;box-shadow:none!important;">
       </div>
-      <button id="nav-toggle" class="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-300 ml-auto">
+      <button id="nav-toggle" class="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-300">
         <svg class="h-7 w-7 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
-      <ul id="nav-links" class="hidden md:flex space-x-8 font-semibold text-lg ml-auto items-center h-full">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="index.html#mission-vision" class="nav-link">Mission & Vision</a></li>
-        <li><a href="index.html#art-mediums" class="nav-link">Art Mediums</a></li>
+      <ul id="nav-links" class="hidden md:flex space-x-8 font-semibold text-lg">
+        <li><a href="#landing" class="nav-link">Home</a></li>
+        <li><a href="#mission-vision" class="nav-link">Mission & Vision</a></li>
+        <li><a href="#art-mediums" class="nav-link">Art Mediums</a></li>
         <li><a href="products.html" class="nav-link">Products</a></li>
         <li><a href="events.html" class="nav-link">Events</a></li>
         <li><a href="explore-art.html" class="nav-link">Explore Art</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="thank-you.html" class="nav-link">Thank You</a></li>
         <li><a href="https://forms.gle/rqd8PNRjmM41PkN46" class="join-btn ml-4" target="_blank">Join Us</a></li>
       </ul>
     </div>
+    <!-- Artistic SVG brush stroke under navbar -->
+    <div class="w-full h-3 relative">
+      <svg class="absolute left-0 top-0 w-full h-full" viewBox="0 0 1440 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 20 Q 360 40 720 20 T 1440 20 V40 H0Z" fill="#fbbf24" fill-opacity="0.25"/>
+        <path d="M0 30 Q 360 10 720 30 T 1440 30 V40 H0Z" fill="#60a5fa" fill-opacity="0.18"/>
+      </svg>
+    </div>
   </nav>
   <div class="h-20 md:h-24"></div>
-
-  <!-- Events Content -->
-  <main class="max-w-6xl mx-auto px-4 py-12 relative">
-    <!-- Animated Background Elements -->
+  <!-- Landing Page -->
+  <section id="landing" class="relative min-h-screen flex flex-col justify-center items-center overflow-hidden">
     <div id="background-3d" class="absolute inset-0 z-0"></div>
+    <!-- Puzzle Pieces Background -->
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <svg width="100%" height="100%" class="absolute inset-0" style="opacity:0.18;" xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <g transform="translate(60,80) scale(1.2)">
+            <path d="M20 0 Q40 0 40 20 Q40 40 20 40 Q0 40 0 20 Q0 0 20 0 Z M20 10 Q25 10 25 20 Q25 30 20 30 Q15 30 15 20 Q15 10 20 10 Z" fill="#fbbf24"/>
+          </g>
+          <g transform="translate(300,120) scale(1.1) rotate(15)">
+            <path d="M20 0 Q40 0 40 20 Q40 40 20 40 Q0 40 0 20 Q0 0 20 0 Z M20 10 Q25 10 25 20 Q25 30 20 30 Q15 30 15 20 Q15 10 20 10 Z" fill="#60a5fa"/>
+          </g>
+          <g transform="translate(600,60) scale(1.4) rotate(-10)">
+            <path d="M20 0 Q40 0 40 20 Q40 40 20 40 Q0 40 0 20 Q0 0 20 0 Z M20 10 Q25 10 25 20 Q25 30 20 30 Q15 30 15 20 Q15 10 20 10 Z" fill="#ec4899"/>
+          </g>
+          <g transform="translate(900,200) scale(1.3) rotate(25)">
+            <path d="M20 0 Q40 0 40 20 Q40 40 20 40 Q0 40 0 20 Q0 0 20 0 Z M20 10 Q25 10 25 20 Q25 30 20 30 Q15 30 15 20 Q15 10 20 10 Z" fill="#34d399"/>
+          </g>
+          <g transform="translate(200,400) scale(1.1) rotate(-20)">
+            <path d="M20 0 Q40 0 40 20 Q40 40 20 40 Q0 40 0 20 Q0 0 20 0 Z M20 10 Q25 10 25 20 Q25 30 20 30 Q15 30 15 20 Q15 10 20 10 Z" fill="#f87171"/>
+          </g>
+          <g transform="translate(700,350) scale(1.2) rotate(8)">
+            <path d="M20 0 Q40 0 40 20 Q40 40 20 40 Q0 40 0 20 Q0 0 20 0 Z M20 10 Q25 10 25 20 Q25 30 20 30 Q15 30 15 20 Q15 10 20 10 Z" fill="#a78bfa"/>
+          </g>
+        </g>
+      </svg>
+    </div>
     <div id="flying-elements" class="absolute inset-0 z-0"></div>
-    
+    <!-- ASCII Flower Text Art Behind Main Heading -->
+    <pre class="ascii-flower-bg absolute left-1/2 top-1/2 z-0 pointer-events-none select-none hidden md:block" style="transform: translate(-50%, -60%); opacity: 0.13; font-size: 0.95rem; color: #fbbf24; font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; white-space: pre; text-align: center;">
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡤⠒⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠖⠋⠀⠀⠀⢻⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢴⠾⠑⢦⡞⠃⠀⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢇⠀⢀⡔⠋⠻⠚⣆⢀⣀⡠⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠳⡝⠆⠀⠀⠀⠁⡧⠆⠈⢣⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⡄⠉⠉⠉⠒⠢⢄⡀⠀⠀⠀⠀⠀⢹⣼⡀⢀⣀⠜⠃⠀⠀⢺⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢧⠀⠀⠀⠀⠀⠀⠙⢶⠀⠀⠀⠀⣾⠿⠛⠙⠢⠤⠤⠤⠒⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢀⢾⠢⠴⠤⢄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣇⠀⠀⠀⠀⠀⠀⢀⡏⢀⣴⠟⠁⠀⠀⠀⠀⢀⡜⠀⠀⡄⠀⠀⢙⡞⠁⠀⠀⢀⠈⢦⠀⠀⠀
+⠀⠀⠀⠀⢠⠋⠀⢠⠀⠀⠀⠙⣆⣀⡤⠤⠤⣄⡀⠀⠀⠈⢦⡀⡀⠀⠀⠀⢀⡏⢀⣴⠟⠁⠀⠀⠀⠀⢀⡜⠀⠀⡄⠀⠀⢙⡞⠁⠀⠀⢀⠈⢦⠀⠀⠀
+⠀⠀⠀⠀⡇⠀⠀⠨⡄⠀⠀⢀⠜⠃⠀⠀⠀⠈⠉⣱⡆⠀⠀⠉⠓⠲⠶⠶⣮⣠⡾⠃⠀⠀⠀⠀⠀⠀⠈⣇⠀⠀⠰⡀⠀⢸⠀⢠⢀⠔⠁⠀⠈⣶⠀⠀
+⠀⠀⠀⠀⢳⡀⠀⠀⣰⣤⣄⡌⣄⢀⢀⠠⠒⠁⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⡟⣿⠉⠀⠀⠀⠀⠀⠀⢀⡴⠼⠦⠄⡀⠡⣰⣼⠻⣾⠟⣀⠀⢀⡼⠈⠀⠀
+⠀⠀⢀⡔⠋⠉⠓⢺⢽⡝⣦⣺⢁⣴⡊⠀⣀⠀⠀⣰⠛⠀⠀⠀⠀⠀⠀⢰⡿⠃⠀⠀⠀⠀⠀⠀⢰⡇⠀⠀⠀⠀⠀⠱⡯⡖⠛⡤⣺⡟⠋⠉⠙⠢⡀⠀
+⠀⢠⠯⠀⠀⠀⠀⢈⡯⢮⣏⣸⣗⠛⠏⠉⠀⠉⠙⢦⡀⠀⠀⠀⠀⠀⢠⣻⠋⠀⠀⠀⠀⠀⠀⠀⣞⠁⠀⠉⠁⠀⣨⠽⠛⢿⢿⣽⠓⠟⢄⡀⠀⠀⢳⡀
+⠠⣞⠒⠀⠈⠉⠉⠀⠷⡜⢱⠙⡴⣧⡒⠠⢀⠀⠀⠀⣧⠀⠀⠀⠀⢠⣷⠃⠀⠀⢀⣀⣤⣴⡶⠿⠛⠳⢤⣀⠀⡰⠁⠀⠀⠆⠀⠙⡆⠀⠀⠈⠁⢀⣘⡤
+⠀⠀⠑⣅⡄⠀⠀⣀⡴⠁⠌⠛⠹⣀⠀⠀⠀⠀⠀⠀⣸⠀⠀⢀⡴⣣⣷⣶⡾⠽⠿⣫⠭⠤⢤⡀⠀⠀⠀⠈⠉⢳⠀⠀⠸⠀⠀⠀⣸⠦⠤⠤⠔⠊⠀⠀
+⠀⠀⠀⠀⠉⠉⡏⠀⠀⣘⠀⠀⠀⠙⣦⢄⣠⣀⡴⠋⠁⢀⡴⣿⠟⠉⠁⠀⠀⠀⠀⡇⠀⠀⠀⠈⢢⡄⠀⠀⠀⠈⢮⡂⡀⠀⢀⡴⠃⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠳⡠⡀⠃⠀⠀⢀⡜⡞⣆⠀⠀⢀⣤⢞⡵⠟⠁⠀⠀⠀⠀⠀⠀⠀⠸⡄⠀⠀⠀⠀⢧⠀⠀⠀⠀⠀⠈⠗⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠈⢦⠦⠔⠒⠉⠀⡟⢸⠒⣋⡥⠞⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠞⠁⣩⠞⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠖⢋⡠⠞⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⣖⠋⣡⡔⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢸⠃⣴⠗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢠⠏⣸⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣰⠃⢠⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⢀⠞⠁⢀⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⢀⣴⣫⠤⠖⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    </pre>
+    <!-- Flying Emojis -->
+    <div id="flying-emojis">
+      <span class="flying-emoji" style="top: 12%; left: 8%;">✨</span>
+      <span class="flying-emoji" style="top: 30%; right: 10%;">🎨</span>
+      <span class="flying-emoji" style="bottom: 20%; left: 15%;">🖌️</span>
+      <span class="flying-emoji" style="bottom: 35%; right: 12%;">✏️</span>
+      <span class="flying-emoji" style="top: 50%; left: 20%;">🖋️</span>
+      <span class="flying-emoji" style="top: 60%; right: 18%;">🖍️</span>
+    </div>
     <!-- Artistic Elements -->
     <div class="artistic-element brush-stroke" style="top: 20%; left: 10%; transform: rotate(-15deg);"></div>
     <div class="artistic-element paint-splash" style="top: 30%; right: 15%;"></div>
@@ -44,167 +192,233 @@
     <div class="artistic-element pencil" style="bottom: 35%; right: 10%; transform: rotate(30deg);"></div>
     <div class="artistic-element calligraphy" style="top: 40%; left: 20%; transform: rotate(15deg);"></div>
     <div class="artistic-element color-pencils" style="bottom: 20%; right: 20%; transform: rotate(-45deg);"></div>
-
-    <h1 class="text-5xl font-bold text-center mb-12 artistic-heading relative z-10">🎉 Our Events
-      <svg class="mx-auto mt-2 w-32 h-6" viewBox="0 0 128 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 12 Q 32 24 128 12" stroke="#fbbf24" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <div id="why-join-flying-text" class="absolute inset-0 pointer-events-none z-20"></div>
+    <div class="z-10 flex flex-col items-center justify-center h-full">
+      <div class="relative inline-block">
+        <h1 class="heading-move text-5xl md:text-7xl font-extrabold mb-4 text-center drop-shadow-lg">The Artists' NSAKCET Club</h1>
+      </div>
+      <p class="calligraphy-pen text-xl md:text-2xl mb-8 text-center">Imagine. Create. Inspire.</p>
+      <div class="flex space-x-6">
+        <a href="events.html" class="draw-animate px-8 py-3 bg-white bg-opacity-80 rounded-lg shadow-lg font-semibold text-lg hover:bg-yellow-100 transition">View Events</a>
+        <a href="explore-art.html" target="_blank" class="draw-animate px-8 py-3 bg-white bg-opacity-80 rounded-lg shadow-lg font-semibold text-lg hover:bg-blue-100 transition">Explore Art</a>
+      </div>
+    </div>
+  </section>
+  <!-- Mission & Vision -->
+  <section id="mission-vision" class="py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 relative overflow-x-hidden">
+    <!-- Flying Emoji for Mission & Vision -->
+    <span class="flying-emoji-section" style="top: 12%; left: 8%;">🎯</span>
+    <div class="artistic-element brush-stroke" style="top: 10%; left: 2%; width: 180px; height: 40px; opacity:0.25;"></div>
+    <div class="artistic-element paint-splash" style="bottom: 8%; right: 6%; width: 120px; height: 120px; opacity:0.18;"></div>
+    <div class="absolute left-1/2 top-0 -translate-x-1/2 -z-10 opacity-30" style="width: 400px; height: 180px;">
+      <svg viewBox="0 0 400 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="200" cy="90" rx="180" ry="60" fill="#fbbf24" fill-opacity="0.13"/>
       </svg>
-    </h1>
-
-    <!-- Slideshow Carousel -->
-    <div id="eventCarousel" class="relative mb-16 flex justify-center items-center">
-      <div class="flex overflow-x-auto no-scrollbar snap-x snap-mandatory gap-8 pb-4 justify-center items-center" style="scroll-behavior:smooth;">
-        <!-- Slides will be injected by JS -->
-      </div>
     </div>
-
-    <!-- Modal for Event Details -->
-    <div id="eventModal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
-      <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-6 relative overflow-y-auto max-h-[90vh]">
-        <button id="closeModal" class="absolute top-3 right-3 text-gray-500 hover:text-pink-600 text-3xl font-bold">&times;</button>
-        <div id="modalContent"></div>
-      </div>
-    </div>
-
-    <!-- Upcoming Events -->
-    <section class="bg-white rounded-2xl shadow-lg p-8">
-      <h2 class="text-3xl font-bold mb-8 text-center">📅 Upcoming Events</h2>
-      <p class="text-lg text-center mb-8">We're excited to bring you more opportunities to engage and create:</p>
-      
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-gray-50 rounded-xl p-6">
-          <h3 class="text-2xl font-bold mb-4">✍ Arabic Calligraphy Workshop</h3>
-          <p class="text-gray-700">Learn the elegant art of Islamic script</p>
-        </div>
-        <div class="bg-gray-50 rounded-xl p-6">
-          <h3 class="text-2xl font-bold mb-4">🖌️ Henna Design Workshop</h3>
-          <p class="text-gray-700">Discover the beauty of traditional and modern patterns</p>
-        </div>
-      </div>
-      
-      <p class="text-center mt-8 text-lg font-semibold">🎨 And Many More Coming Soon…</p>
-      <p class="text-center mt-4 text-gray-600">Stay tuned and follow us for event updates and registrations!</p>
-    </section>
-  </main>
-
-  <footer class="w-full py-6 bg-white bg-opacity-80 text-center text-gray-700 font-medium text-lg border-t border-gray-200 mt-10">
-    &copy; 2024 Website with creativity by <span class="font-bold text-blue-700">Mohammed Hussain Abid Khan</span>
-  </footer>
-
-  <script src="script.js"></script>
-  <script>
-    // Event data
-    const events = [
-      {
-        title: "The Artists' Club Stall – Zouq-e-Hyderabad",
-        date: "25th January 2025",
-        mainImg: "https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/2dd76851-80cc-4e6f-ad72-34e31f614075.jpg?updatedAt=1746879298701",
-        images: [],
-        description: `The Artist Club NSAKCET stall at <em>Zouq-e-Hyderabad</em> was a resounding success! An unforgettable fusion of creativity, talent, and interaction.`,
-        highlights: [
-          {icon: "🎯", text: "1-Minute Challenge: Surprise chits led participants to sketch, paint, or create calligraphy in just 1 minute"},
-          {icon: "✍", text: "Calligraphy Rewards: Winners received their names in Arabic or English calligraphy"},
-          {icon: "🎨", text: "Live Art: On-the-spot paper and canvas artworks by our talented artists"}
-        ],
-        thanks: "Dr. Abdul Sattar Sir, Dr. Mohammad Sanaullah Qaseem Sir, Dr. Raza Ahmed Khan Sir, Miss Umme Ruma Mam, Ms. Asima Mam, and Ms. Sabiha Mam",
-        org: "A heartfelt shoutout to the Mavericks Club and Deanship of Student Affairs, NSAKCET for the stellar organization.",
-        note: "This event was a true celebration of imagination and unity through art."
-      },
-      {
-        title: "Ramadan Expo 2025",
-        date: "27th February 2025",
-        mainImg: "https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/596479be-16a5-489f-908c-e86cfc08cc3d.jpg?updatedAt=1746879298533",
-        images: [],
-        description: "We joined hands to make Ramadan unforgettable!",
-        highlights: [
-          {icon: "🌍", text: "Ramadan Around the World – Unique traditions from different cultures"},
-          {icon: "💰", text: "Zakat Corner – Insights on charity and giving"},
-          {icon: "🌴", text: "Dates Corner – The heart of Ramadan traditions"},
-          {icon: "✍", text: "Arabic Calligraphy Station – Live Islamic art in action"},
-          {icon: "🎨", text: "Poster Design Competition – Artistic reflections of spirituality"}
-        ],
-        thanks: "A heartfelt thank you to all who contributed to making this expo meaningful and impactful!"
-      },
-      {
-        title: "Ramadan Poster Competition",
-        date: "Celebrate Through Creativity 2025",
-        mainImg: "https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1741975703264.jpg?updatedAt=1746774368668",
-        images: [],
-        description: "An open invitation to express Ramadan's beauty through art!",
-        highlights: [
-          {icon: "📌", text: "Ramadan Preparations"},
-          {icon: "📌", text: "Do's & Don'ts of Ramadan"},
-          {icon: "📌", text: "Becoming Better Through Ramadan"},
-          {icon: "📌", text: "The Spirit of Charity"},
-          {icon: "📌", text: "Ramadan & Taqwa"},
-          {icon: "📌", text: "Ramadan & The Quran"}
-        ],
-        note: "Art meets spirituality in this thoughtful and inspiring competition.",
-        linkedin: "https://www.linkedin.com/posts/theartistsclub_ramadan-poster-competition-activity-1234567890"
-      }
-    ];
-
-    // Render carousel slides
-    const carousel = document.querySelector('#eventCarousel .flex');
-    events.forEach((event, idx) => {
-      const slide = document.createElement('div');
-      slide.className = 'snap-center shrink-0 w-80 md:w-[420px] cursor-pointer group relative transition-transform duration-300 hover:scale-105';
-      slide.innerHTML = `
-        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col items-center transition-transform duration-300 hover:scale-105 group">
-          <img src="${event.mainImg}" alt="${event.title}" class="w-full h-[28rem] md:h-[34rem] object-cover">
-          <div class="w-full flex justify-center p-6">
-            <button class="read-more-btn px-8 py-3 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 text-gray-900 text-lg rounded-full font-bold shadow-lg border-2 border-yellow-400 hover:from-yellow-500 hover:via-yellow-400 hover:to-yellow-300 hover:text-yellow-900 hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-yellow-200 ml-auto" data-idx="${idx}">
-              <svg class="inline-block w-6 h-6 mr-2 -mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-              Read More
-            </button>
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-4xl font-bold mb-12 text-center section-title artistic-heading">Our Mission & Vision
+        <svg class="mx-auto mt-2 w-32 h-6" viewBox="0 0 128 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 12 Q 32 24 128 12" stroke="#60a5fa" stroke-width="4" fill="none" stroke-linecap="round"/>
+        </svg>
+      </h2>
+      <div class="flex flex-col md:flex-row gap-16 justify-center items-stretch">
+        <!-- Mission -->
+        <div class="flex-1 flex flex-col items-center relative px-2">
+          <div class="mb-5 z-10 floating-mission-icon">
+            <svg class="w-16 h-16 text-indigo-500" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" stroke="#6366f1" stroke-width="2.2" fill="#fff"/>
+              <path d="M12 6v6l4 2" stroke="#6366f1" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="3" fill="#6366f1"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 z-10 artistic-heading">Mission</h3>
+          <div class="flex flex-col gap-4 items-center mt-2">
+            <span class="mission-float">To provide a platform where students can explore and express their artistic talents through non-living medium art forms.</span>
+            <span class="mission-float">To enhance artistic abilities through structured workshops, competitions, and exhibitions.</span>
+            <span class="mission-float">To create a collaborative environment where artists can connect, grow, and confidently showcase their work.</span>
           </div>
         </div>
-      `;
-      carousel.appendChild(slide);
-    });
-
-    // Attach event listeners to Read More buttons after rendering
-    setTimeout(() => {
-      document.querySelectorAll('.read-more-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const idx = btn.getAttribute('data-idx');
-          openModal(idx);
-        });
-      });
-    }, 0);
-
-    // Modal logic
-    const modal = document.getElementById('eventModal');
-    const modalContent = document.getElementById('modalContent');
-    function openModal(idx) {
-      const event = events[idx];
-      // For Ramadan Poster Competition, use object-contain and white bg
-      const isPoster = event.title.toLowerCase().includes('poster');
-      modalContent.innerHTML = `
-        <h2 class="text-2xl font-bold mb-2 font-sans">${event.title}</h2>
-        <p class="text-gray-600 mb-2">${event.date}</p>
-        <div class="mb-4">${event.description}</div>
-        <h3 class="text-lg font-bold mb-2">Highlights:</h3>
-        <ul class="space-y-2 mb-4">
-          ${event.highlights.map(h => `<li class="flex items-start gap-2"><span class="text-xl">${h.icon}</span><span>${h.text}</span></li>`).join('')}
-        </ul>
-        ${event.thanks ? `<div class="mb-2"><span class="font-semibold">Special Thanks:</span> ${event.thanks}</div>` : ''}
-        ${event.org ? `<div class="mb-2">${event.org}</div>` : ''}
-        ${event.note ? `<div class="italic text-gray-500 mb-2">${event.note}</div>` : ''}
-      `;
-      modal.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
+        <!-- Vision -->
+        <div class="flex-1 flex flex-col items-center relative px-2">
+          <div class="mb-5 z-10 floating-vision-icon">
+            <svg class="w-16 h-16 text-yellow-400" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <ellipse cx="12" cy="12" rx="10" ry="8" stroke="#fbbf24" stroke-width="2.2" fill="#fff"/>
+              <circle cx="12" cy="12" r="3.5" fill="#fbbf24"/>
+              <path d="M12 4l1.5 3M12 20l-1.5-3M4 12l3-1.5M20 12l-3 1.5" stroke="#fbbf24" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 z-10 artistic-heading">Vision</h3>
+          <div class="flex flex-col gap-4 items-center mt-2">
+            <span class="vision-float">To establish The Artists' Club as a leading hub for creativity and high-quality artistic expression.</span>
+            <span class="vision-float">To equip students with the skills and confidence to pursue art as a personal passion.</span>
+            <span class="vision-float">To integrate artistic expression into NSAKCET's campus through exhibitions, collaborations, and creative initiatives.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Art Mediums -->
+  <section id="art-mediums" class="py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative">
+    <!-- Flying Emoji for Art Mediums -->
+    <span class="flying-emoji-section" style="top: 18%; right: 10%;">🎨</span>
+    <div class="artistic-element watercolor" style="top: 20%; right: 5%;"></div>
+    <div class="artistic-element pencil" style="bottom: 15%; left: 8%; transform: rotate(30deg);"></div>
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-10 relative inline-block section-title artistic-heading">
+        Art Mediums We Work With
+        <svg class="absolute left-1/2 transform -translate-x-1/2 bottom-0 w-32 h-6" viewBox="0 0 128 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 12 Q 32 24 128 12" stroke="#fbbf24" stroke-width="4" fill="none" stroke-linecap="round"/>
+        </svg>
+      </h2>
+      <div class="flex flex-wrap justify-center gap-4 mt-8">
+        <span class="art-medium-btn">Sketching</span>
+        <span class="art-medium-btn">Watercolor</span>
+        <span class="art-medium-btn">Acrylic Painting</span>
+        <span class="art-medium-btn">Clay Modeling</span>
+        <span class="art-medium-btn">English Calligraphy</span>
+        <span class="art-medium-btn">Arabic Calligraphy</span>
+        <span class="art-medium-btn">Photography</span>
+        <span class="art-medium-btn">Painting</span>
+        <span class="art-medium-btn">Henna Design</span>
+      </div>
+    </div>
+  </section>
+  <!-- Contact Us -->
+  <section id="contact" class="py-20 bg-[#e7e1fa] relative">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-4xl font-bold mb-6 text-center section-title artistic-heading">Contact Us
+        <svg class="mx-auto mt-2 w-32 h-6" viewBox="0 0 128 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 12 Q 32 24 128 12" stroke="#ec4899" stroke-width="4" fill="none" stroke-linecap="round"/>
+        </svg>
+      </h2>
+      <p class="text-lg text-center mb-10 text-gray-700">Have questions about our products or events? Want to join our community? Reach out to us!</p>
+      <div class="flex flex-col md:flex-row md:space-x-16 gap-10 md:gap-0 justify-center items-start">
+        <div class="flex-1 min-w-[260px]">
+          <h3 class="text-2xl font-bold mb-6">Get in Touch</h3>
+          <ul class="space-y-6">
+            <li class="flex items-start gap-4">
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-purple-200 text-purple-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </span>
+              <div>
+                <div class="font-semibold">Address</div>
+                <div class="text-gray-700">16-4-1, New Malakpet, Near Railway Station,<br>Hyderabad, Telangana 500024</div>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-200 text-blue-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              </span>
+              <div>
+                <div class="font-semibold">Phone</div>
+                <div class="text-gray-700">+91 xxxxxx</div>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-red-100 text-red-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="#fff" stroke="#f87171" stroke-width="2"/><path d="M3 7l9 6 9-6" stroke="#f87171" stroke-width="2" fill="none"/></svg>
+              </span>
+              <div>
+                <div class="font-semibold">Email</div>
+                <div class="text-gray-700">artsclub.nsakcet@gmail.com</div>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-700">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" class="w-6 h-6">
+              </span>
+              <div>
+                <div class="font-semibold">LinkedIn</div>
+                <a href="https://www.linkedin.com/company/arts-club-nsakcet/" class="text-blue-600 hover:underline" target="_blank">@arts-club-nsakcet</a>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-pink-100 text-pink-700">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </span>
+              <div>
+                <div class="font-semibold">Instagram</div>
+                <a href="https://www.instagram.com/artistclub.nsakcet" class="text-pink-600 hover:underline" target="_blank">@artistclub.nsakcet</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="script.js"></script>
+  <style>
+    #flying-emojis {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 5;
     }
-    document.getElementById('closeModal').onclick = function() {
-      modal.classList.add('hidden');
-      document.body.style.overflow = '';
-    };
-    modal.addEventListener('click', function(e) {
-      if (e.target === modal) {
-        modal.classList.add('hidden');
-        document.body.style.overflow = '';
-      }
+    .flying-emoji {
+      position: absolute;
+      font-size: 2.5rem;
+      pointer-events: auto;
+      user-select: none;
+      transition: transform 0.3s cubic-bezier(.77,0,.18,1);
+      animation: emojiFloat 5s ease-in-out infinite alternate;
+      cursor: pointer;
+    }
+    .flying-emoji:nth-child(1) { animation-delay: 0s; }
+    .flying-emoji:nth-child(2) { animation-delay: 1s; }
+    .flying-emoji:nth-child(3) { animation-delay: 2s; }
+    .flying-emoji:nth-child(4) { animation-delay: 1.5s; }
+    .flying-emoji:nth-child(5) { animation-delay: 2.5s; }
+    .flying-emoji:hover {
+      transform: scale(1.3) translateY(-20px) rotate(-10deg);
+      z-index: 20;
+    }
+    @keyframes emojiFloat {
+      0% { transform: translateY(0) scale(1) rotate(0deg); }
+      50% { transform: translateY(-18px) scale(1.08) rotate(8deg); }
+      100% { transform: translateY(0) scale(1) rotate(0deg); }
+    }
+    .flying-emoji-section {
+      position: absolute;
+      font-size: 2.5rem;
+      pointer-events: auto;
+      user-select: none;
+      transition: transform 0.3s cubic-bezier(.77,0,.18,1);
+      animation: emojiSectionFloat 6s ease-in-out infinite alternate;
+      z-index: 10;
+      cursor: pointer;
+    }
+    .flying-emoji-section:hover {
+      transform: scale(1.2) translateY(-18px) rotate(-8deg);
+      z-index: 20;
+    }
+    @keyframes emojiSectionFloat {
+      0% { transform: translateY(0) scale(1) rotate(0deg); }
+      50% { transform: translateY(-16px) scale(1.08) rotate(8deg); }
+      100% { transform: translateY(0) scale(1) rotate(0deg); }
+    }
+  </style>
+  <footer class="w-full py-6 bg-white bg-opacity-80 text-center text-gray-700 font-medium text-lg border-t border-gray-200 mt-10">
+    &copy; 2025 Website with creativity by <span class="font-bold text-blue-700">Mohammed Hussain Abid Khan</span>
+  </footer>
+  <img id="flying-bird-img" src="https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/ARTIST_CLUB_NSAKCET__4_-removebg-preview.png?updatedAt=1746813441204" 
+       alt="Flying Art Club Logo" 
+       class="flying-image">
+  <img id="flying-inauguration-img" src="https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/Inauguration.jpg?updatedAt=1746894108103" alt="Inauguration" class="flying-inauguration-image-bottom">
+  <script>
+    // Hide logo at first
+    document.addEventListener('DOMContentLoaded', function() {
+      var logo = document.getElementById('navbar-logo');
+      if(logo) logo.classList.add('opacity-0');
     });
+    // After bird animation, fade in logo
+    setTimeout(function() {
+      var logo = document.getElementById('navbar-logo');
+      var bird = document.getElementById('flying-bird-img');
+      if(logo) logo.classList.remove('opacity-0');
+      if(bird) bird.style.display = 'none';
+    }, 7500);
   </script>
 </body>
 </html> 
