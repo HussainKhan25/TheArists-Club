@@ -98,7 +98,7 @@
       {
         title: "The Artists' Club Stall – Zouq-e-Hyderabad",
         date: "25th January 2025",
-        mainImg: "https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1738058758222.jpg?updatedAt=1746774369030",
+        mainImg: "https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/2dd76851-80cc-4e6f-ad72-34e31f614075.jpg?updatedAt=1746879298701",
         images: [],
         description: `The Artist Club NSAKCET stall at <em>Zouq-e-Hyderabad</em> was a resounding success! An unforgettable fusion of creativity, talent, and interaction.`,
         highlights: [
@@ -113,7 +113,7 @@
       {
         title: "Ramadan Expo 2025",
         date: "27th February 2025",
-        mainImg: "https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1741345440036%20(1).jpg?updatedAt=1746793091595",
+        mainImg: "https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/596479be-16a5-489f-908c-e86cfc08cc3d.jpg?updatedAt=1746879298533",
         images: [],
         description: "We joined hands to make Ramadan unforgettable!",
         highlights: [
@@ -127,7 +127,7 @@
       },
       {
         title: "Ramadan Poster Competition",
-        date: "Celebrate Through Creativity",
+        date: "Celebrate Through Creativity 2025",
         mainImg: "https://ik.imagekit.io/hackenvision/THE%20ARTISTS'%20CLUB/1741975703264.jpg?updatedAt=1746774368668",
         images: [],
         description: "An open invitation to express Ramadan's beauty through art!",
@@ -148,19 +148,30 @@
     const carousel = document.querySelector('#eventCarousel .flex');
     events.forEach((event, idx) => {
       const slide = document.createElement('div');
-      slide.className = 'snap-center shrink-0 w-80 md:w-[420px] cursor-pointer group relative transition-transform duration-300 hover:scale-105 flying-slide';
+      slide.className = 'snap-center shrink-0 w-80 md:w-[420px] cursor-pointer group relative transition-transform duration-300 hover:scale-105';
       slide.innerHTML = `
-        <div class="rounded-2xl shadow-lg overflow-hidden h-64 md:h-80 relative">
-          <img src="${event.mainImg}" alt="${event.title}" class="w-full h-full object-cover group-hover:brightness-90 transition">
-          <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-white/90 via-white/70 to-transparent p-4">
-            <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-1 drop-shadow">${event.title}</h2>
-            <p class="text-gray-800 text-sm md:text-base drop-shadow">${event.date}</p>
+        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col items-center transition-transform duration-300 hover:scale-105 group">
+          <img src="${event.mainImg}" alt="${event.title}" class="w-full h-[28rem] md:h-[34rem] object-cover">
+          <div class="w-full flex justify-center p-6">
+            <button class="read-more-btn px-8 py-3 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 text-gray-900 text-lg rounded-full font-bold shadow-lg border-2 border-yellow-400 hover:from-yellow-500 hover:via-yellow-400 hover:to-yellow-300 hover:text-yellow-900 hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-yellow-200 ml-auto" data-idx="${idx}">
+              <svg class="inline-block w-6 h-6 mr-2 -mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              Read More
+            </button>
           </div>
         </div>
       `;
-      slide.addEventListener('click', () => openModal(idx));
       carousel.appendChild(slide);
     });
+
+    // Attach event listeners to Read More buttons after rendering
+    setTimeout(() => {
+      document.querySelectorAll('.read-more-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const idx = btn.getAttribute('data-idx');
+          openModal(idx);
+        });
+      });
+    }, 0);
 
     // Modal logic
     const modal = document.getElementById('eventModal');
@@ -170,7 +181,6 @@
       // For Ramadan Poster Competition, use object-contain and white bg
       const isPoster = event.title.toLowerCase().includes('poster');
       modalContent.innerHTML = `
-        <img src="${event.mainImg}" alt="${event.title}" class="w-full h-56 rounded-xl mb-4 ${isPoster ? 'object-contain bg-white' : 'object-cover'}">
         <h2 class="text-2xl font-bold mb-2 font-sans">${event.title}</h2>
         <p class="text-gray-600 mb-2">${event.date}</p>
         <div class="mb-4">${event.description}</div>
@@ -195,23 +205,6 @@
         document.body.style.overflow = '';
       }
     });
-
-    // Add flying animation to slides
-    const style = document.createElement('style');
-    style.innerHTML = `
-      .flying-slide {
-        animation: flySlide 7s ease-in-out infinite alternate;
-      }
-      @keyframes flySlide {
-        0% { transform: translateY(0) scale(1) rotate(-2deg); }
-        20% { transform: translateY(-10px) scale(1.03) rotate(2deg); }
-        40% { transform: translateY(8px) scale(1.01) rotate(-1deg); }
-        60% { transform: translateY(-6px) scale(1.04) rotate(1deg); }
-        80% { transform: translateY(6px) scale(1.02) rotate(-2deg); }
-        100% { transform: translateY(0) scale(1) rotate(0deg); }
-      }
-    `;
-    document.head.appendChild(style);
   </script>
 </body>
 </html> 
