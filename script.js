@@ -256,4 +256,18 @@ document.addEventListener('DOMContentLoaded', () => {
   addInteractiveHeading();
   addJoinUsButtonWiggle();
   addMissionVisionBounce();
+  // Hamburger menu toggle for mobile
+  const navToggle = document.getElementById('nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('hidden');
+    });
+    // Optional: close menu when a link is clicked (on mobile)
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth < 768) navLinks.classList.add('hidden');
+      });
+    });
+  }
 }); 
