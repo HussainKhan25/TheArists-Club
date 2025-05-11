@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thank You - The Artists' Club</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&display=swap" rel="stylesheet">
   <style>
     body {
-      background: rgba(251, 207, 232, 0.3);
+      background: rgba(251, 207, 232, 0.3); /* light pink with 30% opacity */
       min-height: 100vh;
       overflow: hidden;
     }
@@ -18,32 +19,38 @@
       font-size: 1.6rem;
       font-weight: 700;
       opacity: 0.98;
+      padding: 0;
+      border-radius: 0;
       background: none;
+      box-shadow: none;
+      border: none;
       pointer-events: none;
       z-index: 10;
       animation: flyName 12s ease-in-out infinite alternate;
       transition: color 0.3s;
       letter-spacing: 0.01em;
       text-shadow: 0 1px 2px #fff8;
+      margin: 0 25em 25em 0;
     }
     .flying-name:hover {
       color: #fbbf24;
       z-index: 20;
       animation-play-state: paused;
-      transition: transform 0.5s cubic-bezier(.77, 0, .18, 1), color 0.3s;
+      transition: transform 0.5s cubic-bezier(.77,0,.18,1), color 0.3s;
     }
     @keyframes flyName {
       0% { transform: translateY(0) scale(1); }
       50% { transform: translateY(-30px) scale(1.08); }
       100% { transform: translateY(0) scale(1); }
     }
+    /* Floating Squares Background */
     .floating-square {
       position: absolute;
       width: 48px;
       height: 48px;
       border: 2.5px solid #fbbf24;
       border-radius: 0.4rem;
-      background: rgba(255, 255, 255, 0.18);
+      background: rgba(255,255,255,0.18);
       opacity: 0.5;
       z-index: 1;
       animation: floatSquare 8s ease-in-out infinite alternate;
@@ -68,41 +75,148 @@
     <div class="floating-square sq3"></div>
     <div class="floating-square sq4"></div>
     <div class="floating-square sq5"></div>
-
+    <!-- Home link moved to top right -->
     <a href="index.html" class="absolute top-4 right-4 px-6 py-2 bg-yellow-400 text-white rounded-lg shadow-lg font-semibold text-lg hover:bg-yellow-500 transition z-20">Home</a>
-    <h1 class="text-5xl md:text-7xl font-extrabold text-center mb-8 mt-32 z-20">Thank You!</h1>
-    <p class="text-3xl md:text-4xl font-bold text-center text-gray-800 z-20 mb-8" style="text-shadow: 0 2px 12px #fff8, 0 1px 2px #fbbf2433;">To everyone who made our journey possible.</p>
-
+    <h1 class="text-5xl md:text-7xl font-extrabold text-center mb-8 mt-32 artistic-heading z-20">Thank You!</h1>
+    <p class="text-3xl md:text-4xl font-bold text-center text-gray-800 z-20 mb-8" style="text-shadow: 0 2px 12px #fff8, 0 1px 2px #fbbf2433; letter-spacing: 0.01em;">To everyone who made our journey possible.</p>
+    
     <!-- Page Navigation -->
     <div class="flex space-x-4 mb-8 z-20">
       <button id="prevPage" class="px-6 py-2 bg-yellow-400 text-white rounded-lg shadow-lg font-semibold text-lg hover:bg-yellow-500 transition disabled:opacity-50 disabled:cursor-not-allowed">Previous</button>
-      <span id="pageInfo" class="px-6 py-2 bg-white bg-opacity-80 rounded-lg shadow-lg font-semibold text-lg">Page 1 of 6</span>
+      <span id="pageInfo" class="px-6 py-2 bg-white bg-opacity-80 rounded-lg shadow-lg font-semibold text-lg">Page 1 of 4</span>
       <button id="nextPage" class="px-6 py-2 bg-yellow-400 text-white rounded-lg shadow-lg font-semibold text-lg hover:bg-yellow-500 transition">Next</button>
     </div>
-
-    <!-- Flying Names Container -->
+    
+    <!-- Flying Names -->
     <div id="flying-names"></div>
   </div>
-
   <script>
+    // All names organized by pages
     const pageNames = {
-      page1: ["Dr., Abdul Sattar Sir", "Dr. Mohammad Sanaullah Qaseem Sir", "Dr. Raza Ahmed Khan Sir", "Ms. Umme Ruma mam", "Ms. Asima ma'am", "My MOM{Hussain's Mom}", "Asna Mirza", "Aamesha khan", "Ramishah Khanam", "Ayesha Siddiqua", "Hajira Jabeen", "Hajar Raoof", "Mohd Nayef Siddique", "Shaik Farhana", "Faiza Mehtab", "Ummul Faiz", "Saniya Maheen Syed", "Maheen", "Ms. Tahera Abid mam", "Abrar", "Zaid", "Mehvish Fatima"],
-      page2: ["Mohammed Ameen Ul Haq", "Mohammed Hussain Abid Khan", "Shaik Sahil", "Abu Imam", "Affan", "Sobiya Ayaz", "Ms. Tahera Abid mam", "Areeba A.", "Saad", "Shaik Mehraj", "Sumair", "Masooma Fatima", "Iqra Ifteqar", "Husna Begum", "Abeeha", "Abubakar", "Zayed", "Taharim", "Yusra", "Ayesha", "Ismail", "Zakaria", "Ghouse", "Rehan Ahmed Siddiqui", "Rehan", "Alisha", "Raqeeb"],
-      page3: ["Aesha Mahveen", "Ms. Asima Parveen mam", "Ms. Sabiha Khatoon mam", "Mohammed Abubaker", "Ali Akber", "Noman JamalUddin", "Ahmed Jamal", "Umair Nouman", "Syed Mohammed Arsalan Ghori", "Noorayn Fatima", "Safiya Fatima", "Mehvish", "Masooma Fatima", "Affan", "Abrar", "Rehan Ahmed Siddiqui", "Rehan", "Sumaiya Fatima", "Abdul Ahad"],
-      page4: ["Aaliya Jabeen", "Saniya Inayath", "Mohammed Hasham", "Abdul Rahman", "Hamza Raza Khan", "Hamza Hussain", "Ms. Syeda Jameela Unnisa mam", "Nashwan Mohiuddin", "Tanveer Fatima", "Hussain Shareef", "Zaid", "Abu Talha", "Ghouse", "Haleema Tazeen", "Mohd Mujtaba Quadri", "Juveria Yasmeen"],
-      page5: ["Arjumand Afroze", "Mohd Danish Shareef", "Mohammed Sameer Awais", "Namira Ibrahim Ali", "Nadira Fatima Sireen Sultana", "Taharim", "Uzma Fatima", "Huda Khan", "Salwa Ashfaq", "Hedayathullah Imamuddin", "Nabeel", "Namira", "Naif", "Husna Zakir", "Ms. Shanila Mahreen mam", "Dr. Farheen Sultana mam", "Dr. Farhath mam", "Ms. Rahmath Unnisa mam", "Abrar Ahmed"],
-      page6: ["Sumair", "Mohammed Ibraheemuddin", "Syed Furqaan Moazzam", "Ms. Nazia mam", "Abrar", "Mr. Ishaq Sir", "Ms. Afsha Sultana mam"]
+      page1: [
+        // NSAKCET Faculty Staff
+        "Dr., Abdul Sattar Sir", "Dr. Mohammad Sanaullah Qaseem Sir", "Dr. Raza Ahmed Khan Sir", 
+        "Ms. Umme Ruma mam", "Ms. Asima ma'am", "My MOM{Hussain's Mom}",
+        // The Artists' Club Team
+        "Asna Mirza", "Aamesha khan", "Ramishah Khanam", "Ayesha Siddiqua", "Hajira Jabeen", 
+        "Hajar Raoof", "Mohd Nayef Siddique", "Shaik Farhana", "Hajar Raoof", "Faiza Mehtab", 
+        "Ummul Faiz", "Saniya Maheen Syed", "Maheen", "Ms. Tahera Abid mam", "Abrar", "Zaid", 
+         "Mehvish Fatima"
+      ],
+      page2: [
+        // Ramadan Expo Team (Strategic)
+        "Mohammed Ameen Ul Haq", "Mohammed Hussain Abid Khan", "Shaik Sahil", "Abu Imam", 
+        "Affan", "Sobiya Ayaz", "Ms. Tahera Abid mam", "Areeba A.",
+        // Ramadan Expo Team (Content)
+        "Saad", "Shaik Mehraj", "Sumair",
+        // Ramadan Expo Team (Decoration & Event Management)
+        "Masooma Fatima", "Iqra Ifteqar", "Husna Begum", "Abeeha", "Abubakar", "Zayed", 
+        "Taharim", "Yusra", "Ayesha", "Ismail", "Zakaria", "Ghouse", "Rehan Ahmed Siddiqui", 
+        "Rehan", "Alisha", "Raqeeb"
+      ],
+      page3: [
+        // Additional Team Members
+        "Aesha Mahveen",
+        "Ms. Asima Parveen mam",
+        "Ms. Sabiha Khatoon mam",
+        "Mohammed Abubaker",
+        "Ali Akber",
+        "Noman JamalUddin",
+        "Ahmed Jamal",
+        "Umair Nouman",
+        "Syed Mohammed Arsalan Ghori",
+        "Noorayn Fatima",
+        "Safiya Fatima",
+        "Mehvish",
+        "Masooma Fatima",
+        "Affan",
+        "Abrar",
+        "Rehan Ahmed Siddiqui",
+        "Rehan",
+        "Sumaiya Fatima",
+        "Abdul Ahad"
+      ],
+      page4: [
+        "Aaliya Jabeen",
+        "Saniya Inayath",
+        "Mohammed Hasham",
+        "Abdul Rahman",
+        "Hamza Raza Khan",
+        "Hamza Hussain",
+        "Ms. Syeda Jameela Unnisa mam",
+        "Nashwan Mohiuddin",
+        "Tanveer Fatima",
+        "Hussain Shareef",
+        "Zaid",
+        "Abu Talha",
+        "Ghouse",
+        "Haleema Tazeen",
+        "Mohd Mujtaba Quadri",
+        "Juveria Yasmeen"
+
+      ],
+        page5: [
+        "Arjumand Afroze",
+        "Mohd Danish Shareef",
+        "Mohammed Sameer Awais",
+        "Namira Ibrahim Ali",
+        "Nadira Fatima Sireen Sultana",
+        "Taharim",
+        "Uzma Fatima",
+        "Huda Khan",
+        "Salwa Ashfaq",
+        "Hedayathullah Imamuddin",
+        "Nabeel",
+        "Namira",
+        "Naif",
+        "Husna Zakir",
+        "Ms. Shanila Mahreen mam",
+        "Dr. Farheen Sultana mam",
+        "Dr. Farhath mam",
+        "Ms. Rahmath Unnisa mam",
+        "Abrar Ahmed"
+      ],
+
+        page6: [
+        "Sumair",
+        "Mohammed Ibraheemuddin",
+        "Syed Furqaan Moazzam",
+        "Ms. Nazia mam",
+        "Abrar"
+      ]
     };
 
     const container = document.getElementById('flying-names');
     const prevButton = document.getElementById('prevPage');
     const nextButton = document.getElementById('nextPage');
     const pageInfo = document.getElementById('pageInfo');
-
+    
     let currentPage = 1;
-    const totalPages = Object.keys(pageNames).length;
+    const totalPages = 6; // Now 6 pages
 
-    const nameColors = ['#fbbf24', '#60a5fa', '#ec4899', '#34d399', '#f87171', '#a78bfa', '#f472b6', '#38bdf8', '#facc15', '#4ade80'];
+    // Color palette for names
+    const nameColors = [
+      '#fbbf24', // yellow
+      '#60a5fa', // blue
+      '#ec4899', // pink
+      '#34d399', // green
+      '#f87171', // red
+      '#a78bfa', // purple
+      '#f472b6', // rose
+      '#38bdf8', // sky
+      '#facc15', // amber
+      '#4ade80', // emerald
+      '#fb7185', // rose dark
+      '#818cf8', // indigo
+      '#f59e42', // orange
+      '#10b981', // teal
+      '#eab308', // gold
+      '#6366f1', // indigo dark
+      '#f472b6', // pink light
+      '#fbbf24', // yellow again
+      '#60a5fa', // blue again
+      '#ec4899', // pink again
+    ];
 
     function updatePageInfo() {
       pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
@@ -111,28 +225,56 @@
     }
 
     function displayNames(page) {
-      container.innerHTML = '';
-      const names = pageNames[`page${page}`];
+      container.innerHTML = ''; // Clear existing names
+      const pageKey = `page${page}`;
+      const names = pageNames[pageKey];
+
+      // Calculate grid-like positions for better distribution
       const gridSize = Math.ceil(Math.sqrt(names.length));
 
       names.forEach((name, i) => {
         const span = document.createElement('span');
         span.className = 'flying-name';
         span.textContent = name;
+        
+        // Assign a color from the palette, cycling if needed
         span.style.color = nameColors[i % nameColors.length];
+        
+        // Calculate position with padding
         const row = Math.floor(i / gridSize);
         const col = i % gridSize;
-        span.style.top = `${15 + row * 18}%`;
-        span.style.left = `${10 + col * 15}%`;
-
+        const top = 15 + (row * 25);
+        const left = 10 + (col * 25);
+        
+        span.style.top = top + '%';
+        span.style.left = left + '%';
+        
+        // If name has more than 3 words, reduce font size and increase margin
         if (name.trim().split(/\s+/).length > 3) {
           span.style.fontSize = '1.1rem';
+          span.style.margin = '0 22em 22em 0';
+          span.style.whiteSpace = 'nowrap';
+        } else {
+          span.style.margin = '0 25em 25em 0';
         }
-
+        
+        span.style.animationDelay = (Math.random() * 8) + 's';
+        
+        // On hover, move to a new random position within a smaller range
+        span.addEventListener('mouseenter', function() {
+          const currentTop = parseFloat(span.style.top);
+          const currentLeft = parseFloat(span.style.left);
+          const newTop = Math.max(15, Math.min(85, currentTop + (Math.random() * 20 - 10)));
+          const newLeft = Math.max(10, Math.min(85, currentLeft + (Math.random() * 20 - 10)));
+          span.style.top = newTop + '%';
+          span.style.left = newLeft + '%';
+        });
+        
         container.appendChild(span);
       });
     }
 
+    // Event listeners for pagination
     prevButton.addEventListener('click', () => {
       if (currentPage > 1) {
         currentPage--;
@@ -149,9 +291,9 @@
       }
     });
 
-    // Initial render
+    // Initial display
     displayNames(currentPage);
     updatePageInfo();
   </script>
 </body>
-</html>
+</html> 
